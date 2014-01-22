@@ -45,11 +45,11 @@ module Dumper
 
     def to_hash
       {
-        framework: @framework,
-        rails_env: @rails_env,
-        rails_version: @rails_version,
-        dispatcher: @dispatcher,
-        configs: Hash[@databases.map{|k, database| [ k, database.config.reject{|k,v| k == :password } ] }]
+          :framework => @framework,
+          :rails_env => @rails_env,
+          :rails_version => @rails_version,
+          :dispatcher => @dispatcher,
+          :configs => Hash[@databases.map { |k, database| [k, database.config.reject { |k, v| k == :password }] }]
       }
     end
 

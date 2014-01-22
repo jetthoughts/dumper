@@ -92,10 +92,9 @@ module Dumper
       retry_count = 0
       begin
         aws.buckets[s3[:bucket]].objects[s3[:key]].write(
-          file: @database.dump_path,
-          content_type: 'application/octet-stream',
-          content_disposition: "attachment; filename=#{@database.filename}",
-        )
+          :file => @database.dump_path,
+          :content_type => 'application/octet-stream',
+          :content_disposition => "attachment; filename=#{@database.filename}" )
       rescue # Errno::ECONNRESET, Errno::EPIPE, etc.
         raise if retry_count > 8
         retry_count += 1
